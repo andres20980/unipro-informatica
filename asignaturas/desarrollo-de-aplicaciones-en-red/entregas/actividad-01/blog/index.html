@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cuaderno de bitácora de un estudiante de Informática: web, seguridad y derecho digital.">
+  <title>Bitácora de Andrés · Blog de Informática</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📓</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/posts.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#/" aria-label="Ir a la portada">
+        <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+        <span>
+          <strong>Bitácora de Andrés</strong>
+          <small>Apuntes de un estudiante de Informática</small>
+        </span>
+      </a>
+      <nav class="header-actions" aria-label="Acciones principales">
+        <button type="button" id="btn-new" class="btn btn-primary">+ Nueva entrada</button>
+        <button type="button" id="btn-theme" class="btn btn-ghost" aria-pressed="false" title="Cambiar tema claro/oscuro">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+          <span class="sr-only">Cambiar tema</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="container">
+    <!-- Vista de portada: buscador, filtros y listado de entradas -->
+    <section id="view-list" aria-labelledby="titulo-portada">
+      <div class="hero">
+        <h1 id="titulo-portada">Aprender, probar y escribirlo</h1>
+        <p>Notas sobre desarrollo web, seguridad y legislación informática. Todo hecho con HTML, CSS y JavaScript puro.</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="search">
+          <span class="sr-only">Buscar entradas</span>
+          <input id="search" type="search" placeholder="Buscar por título, texto o etiqueta…" autocomplete="off">
+        </label>
+        <fieldset class="filters-set">
+          <legend class="sr-only">Filtrar por categoría</legend>
+          <div id="filters" class="filters"></div>
+        </fieldset>
+      </div>
+
+      <p id="results-info" class="results-info" role="status" aria-live="polite"></p>
+      <div id="posts" class="posts"></div>
+      <div class="more-wrap"><button type="button" id="btn-more" class="btn" hidden>Cargar más entradas</button></div>
+    </section>
+
+    <!-- Vista de detalle de una entrada -->
+    <section id="view-post" hidden></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Andrés Sánchez Martín · Actividad 1, Desarrollo de aplicaciones en red · UNIPRO</p>
+      <p><small>Las entradas y comentarios nuevos se guardan solo en tu navegador (localStorage).</small></p>
+    </div>
+  </footer>
+
+  <!-- Formulario de nueva entrada -->
+  <dialog id="dlg-new" aria-labelledby="dlg-title">
+    <form id="form-new" method="dialog" novalidate>
+      <h2 id="dlg-title">Nueva entrada</h2>
+
+      <div class="field">
+        <label for="f-title">Título</label>
+        <input id="f-title" name="title" type="text" maxlength="90" required>
+        <p class="error" data-for="title"></p>
+      </div>
+
+      <div class="field">
+        <label for="f-category">Categoría</label>
+        <select id="f-category" name="category" required>
+          <option value="">Elige una categoría…</option>
+        </select>
+        <p class="error" data-for="category"></p>
+      </div>
+
+      <div class="field">
+        <label for="f-tags">Etiquetas <small>(separadas por comas)</small></label>
+        <input id="f-tags" name="tags" type="text" placeholder="html, css, accesibilidad">
+      </div>
+
+      <div class="field">
+        <label for="f-content">Contenido <small>(deja una línea en blanco entre párrafos)</small></label>
+        <textarea id="f-content" name="content" rows="8" required></textarea>
+        <p class="error" data-for="content"></p>
+      </div>
+
+      <div class="dialog-actions">
+        <button type="button" id="btn-cancel" class="btn btn-ghost">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Publicar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
